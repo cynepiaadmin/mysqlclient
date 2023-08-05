@@ -31,7 +31,7 @@ if __name__ == "__main__":
         for name in sorted(names):
             print(f"{name} = {value}")
     if error_last is not None:
-        print("ERROR_LAST = %s" % error_last)
+        print(("ERROR_LAST = %s" % error_last))
 
 
 ERROR_FIRST = 2000

@@ -166,7 +166,7 @@ class Connection(_mysql.connection):
             conv = conversions
 
         conv2 = {}
-        for k, v in conv.items():
+        for k, v in list(conv.items()):
             if isinstance(k, int) and isinstance(v, list):
                 conv2[k] = v[:]
             else:
@@ -192,7 +192,7 @@ class Connection(_mysql.connection):
 
         super().__init__(*args, **kwargs2)
         self.cursorclass = cursorclass
-        self.encoders = {k: v for k, v in conv.items() if type(k) is not int}
+        self.encoders = {k: v for k, v in list(conv.items()) if type(k) is not int}
 
         self._server_version = tuple(
             [numeric_part(n) for n in self.get_server_info().split(".")[:2]]

@@ -189,7 +189,7 @@ class BaseCursor:
         if args is not None:
             if isinstance(args, dict):
                 nargs = {}
-                for key, item in args.items():
+                for key, item in list(args.items()):
                     if isinstance(key, str):
                         key = key.encode(db.encoding)
                     nargs[key] = db.literal(item)
@@ -457,7 +457,7 @@ class CursorUseResultMixIn:
     def __iter__(self):
         return self
 
-    def next(self):
+    def __next__(self):
         row = self.fetchone()
         if row is None:
             raise StopIteration

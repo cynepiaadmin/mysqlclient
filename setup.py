@@ -155,7 +155,7 @@ else:
     ext_options = get_config_posix(get_options())
 
 print("# Options for building extension module:")
-for k, v in ext_options.items():
+for k, v in list(ext_options.items()):
     print(f"  {k}: {v}")
 
 ext_modules = [
